@@ -1,23 +1,29 @@
-# VoltStore Product Page
+# VoltStore
 
-A responsive product page demo for Aura Pro wireless headphones, built with plain HTML, CSS, and JavaScript.
+A responsive product page demo for Aura Pro wireless headphones.
 
 ## Features
 
-- Product image gallery with selectable views
-- Colour selection and quantity controls
-- Shopping cart drawer with quantity updates and saved cart state
+- Product gallery with selectable views
+- Colour and quantity selection
+- Shopping cart with saved browser storage
 - Wishlist toggle
+- Product description, specifications, and reviews
+- Responsive layout with reduced-motion support
 - Pincode format check with an estimated delivery date
-- Description, specifications, and reviews tabs
-- Responsive layout and reduced-motion support
 
 ## Run locally
 
-No build step or dependencies are required. Open `index (7).html` in a browser, or serve this folder with any static file server.
+There are no dependencies or build steps. Open `index.html` in a web browser.
 
-The HTML page loads `style (6).css` and `script (4).js` from the same folder.
+## Project files
 
-## Demo notes
+| File | Purpose |
+| --- | --- |
+| `index.html` | Product page structure and content |
+| `style.css` | Layout, responsive styles, and visual design |
+| `script.js` | Gallery, product controls, tabs, and cart behavior |
 
-This is a front-end demo. Checkout is not connected to a payment or order service, and the pincode check validates the format rather than checking a live delivery network. The cart is stored in the browser's local storage.
+## Demo limitations
+
+This is a front-end demo. Checkout is not connected to a payment or order service. The pincode check validates the format only; it does not check live delivery availability. Cart contents are saved in the browser's local storage.
