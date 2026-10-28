@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Aura Pro Wireless Headphones | Product Page</title>
+  <meta name="description" content="Aura Pro wireless headphones with active noise cancellation and 40-hour battery life.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Sora:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style%20(6).css">
+</head>
+<body>
+  <!-- Shared SVG art (product "photos") -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="v1" viewBox="0 0 400 400">
+      <path class="hp-stroke" d="M112 235 C112 95 288 95 288 235" fill="none" stroke-width="20" stroke-linecap="round"/>
+      <rect class="hp-fill" x="84" y="212" width="62" height="112" rx="28"/>
+      <rect x="72" y="224" width="24" height="88" rx="12" fill="#000" opacity=".28"/>
+      <rect class="hp-fill" x="254" y="212" width="62" height="112" rx="28"/>
+      <rect x="304" y="224" width="24" height="88" rx="12" fill="#000" opacity=".28"/>
+      <circle cx="115" cy="268" r="9" fill="#fff" opacity=".35"/>
+      <circle cx="285" cy="268" r="9" fill="#fff" opacity=".35"/>
+    </symbol>
+    <symbol id="v2" viewBox="0 0 400 400">
+      <circle class="hp-fill" cx="200" cy="200" r="150"/>
+      <circle cx="200" cy="200" r="108" fill="#000" opacity=".22"/>
+      <circle cx="200" cy="200" r="64" fill="none" stroke="#fff" stroke-opacity=".5" stroke-width="6"/>
+      <circle cx="200" cy="200" r="22" fill="#fff" opacity=".85"/>
+      <rect x="188" y="40" width="24" height="10" rx="5" fill="#fff" opacity=".5"/>
+    </symbol>
+    <symbol id="v3" viewBox="0 0 400 400">
+      <rect class="hp-fill" x="70" y="110" width="260" height="190" rx="70"/>
+      <path d="M90 205 H310" stroke="#fff" stroke-opacity=".45" stroke-width="5" stroke-dasharray="3 9" stroke-linecap="round"/>
+      <rect x="180" y="195" width="40" height="22" rx="11" fill="#fff" opacity=".8"/>
+      <path d="M200 110 v-26 a14 14 0 0 1 28 0" fill="none" stroke="#000" stroke-opacity=".3" stroke-width="8" stroke-linecap="round"/>
+    </symbol>
+  </svg>
+
+  <header class="top">
+    <div class="wrap top-row">
+      <a href="#" class="logo">Volt<span>Store</span></a>
+      <p class="promo">Free delivery over ₹999 · 7-day returns</p>
+      <button class="cart-btn" id="openCart" aria-label="Open cart">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4h2l2.4 11.2a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.5L21 8H6"/><circle cx="10" cy="20" r="1.2"/><circle cx="17" cy="20" r="1.2"/></svg>
+        <span class="badge" id="cartCount">0</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="wrap" id="main">
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <a href="#">Home</a> / <a href="#">Audio</a> / <a href="#">Headphones</a> / <span aria-current="page">Aura Pro</span>
+    </nav>
+
+    <section class="product" id="product">
+      <!-- Gallery -->
+      <div class="gallery">
+        <div class="stage" id="stage">
+          <svg viewBox="0 0 400 400" role="img" aria-label="Product image"><use id="stageUse" href="#v1"/></svg>
+        </div>
+        <div class="thumbs" role="group" aria-label="Product images">
+          <button class="thumb active" data-view="v1" aria-label="Front view"><svg viewBox="0 0 400 400"><use href="#v1"/></svg></button>
+          <button class="thumb" data-view="v2" aria-label="Ear cup close-up"><svg viewBox="0 0 400 400"><use href="#v2"/></svg></button>
+          <button class="thumb" data-view="v3" aria-label="Carry case"><svg viewBox="0 0 400 400"><use href="#v3"/></svg></button>
+        </div>
+      </div>
+
+      <!-- Details -->
+      <div class="info">
+        <p class="brand">AURA AUDIO</p>
+        <h1>Aura Pro Wireless Headphones with Noise Cancellation</h1>
+
+        <div class="rating">
+          <span class="stars" aria-label="4.4 out of 5 stars">★★★★<i>★</i></span>
+          <a href="#reviews" data-tab="reviews">4.4 · 1,284 ratings</a>
+        </div>
+
+        <div class="price-row">
+          <span class="price" id="price">₹4,999</span>
+          <s class="mrp">₹7,999</s>
+          <span class="off">38% off</span>
+        </div>
+        <p class="tax">Inclusive of all taxes</p>
+
+        <ul class="highlights">
+          <li>Active noise cancellation, up to 35 dB</li>
+          <li>40-hour battery, 10 min charge = 5 hours</li>
+          <li>Bluetooth 5.3 with dual-device pairing</li>
+          <li>Foldable design with carry case</li>
+        </ul>
+
+        <fieldset class="colors">
+          <legend>Colour: <b id="colorName">Midnight</b></legend>
+          <label class="swatch"><input type="radio" name="color" value="Midnight" data-hex="#1F2937" checked><span style="--c:#1F2937"></span><em class="sr">Midnight</em></label>
+          <label class="swatch"><input type="radio" name="color" value="Sage" data-hex="#6B8F71"><span style="--c:#6B8F71"></span><em class="sr">Sage</em></label>
+          <label class="swatch"><input type="radio" name="color" value="Coral" data-hex="#E4572E"><span style="--c:#E4572E"></span><em class="sr">Coral</em></label>
+        </fieldset>
+
+        <div class="buy-row">
+          <div class="qty" role="group" aria-label="Quantity">
+            <button type="button" id="qMinus" aria-label="Decrease quantity">−</button>
+            <input id="qty" type="number" value="1" min="1" max="10" aria-label="Quantity">
+            <button type="button" id="qPlus" aria-label="Increase quantity">+</button>
+          </div>
+          <button class="btn primary" id="addBtn">Add to cart</button>
+          <button class="wish" id="wishBtn" aria-pressed="false" aria-label="Add to wishlist">♡</button>
+        </div>
+        <button class="btn dark full" id="buyNow">Buy now</button>
+        <p class="stock">● In stock <span>· Only 7 left, order soon</span></p>
+
+        <div class="delivery">
+          <label for="pin">Check delivery</label>
+          <div class="pin-row">
+            <input id="pin" inputmode="numeric" maxlength="6" placeholder="Enter 6-digit pincode">
+            <button class="btn" id="pinBtn" type="button">Check</button>
+          </div>
+          <p class="pin-msg" id="pinMsg" role="status"></p>
+        </div>
+
+        <ul class="trust">
+          <li>🚚 Free delivery</li>
+          <li>↩ 7-day returns</li>
+          <li>🛡 1-year warranty</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Tabs -->
+    <section class="tabs" aria-label="Product information">
+      <div class="tablist" role="tablist">
+        <button role="tab" id="t-desc" aria-controls="p-desc" aria-selected="true">Description</button>
+        <button role="tab" id="t-specs" aria-controls="p-specs" aria-selected="false" tabindex="-1">Specifications</button>
+        <button role="tab" id="t-reviews" aria-controls="p-reviews" aria-selected="false" tabindex="-1">Reviews</button>
+      </div>
+
+      <div role="tabpanel" id="p-desc" aria-labelledby="t-desc" class="panel">
+        <h2>Quiet the world. Keep the music.</h2>
+        <p>Aura Pro blends hybrid active noise cancellation with 40mm drivers tuned for clear vocals and punchy bass. Memory-foam ear cushions and a lightweight 250 g frame keep it comfortable through long sessions.</p>
+        <p>Switch between ANC and Transparency mode with a single button, and take calls with a 4-mic array that filters out background noise.</p>
+      </div>
+
+      <div role="tabpanel" id="p-specs" aria-labelledby="t-specs" class="panel" hidden>
+        <table class="specs">
+          <tr><th>Driver</th><td>40 mm dynamic</td></tr>
+          <tr><th>Connectivity</th><td>Bluetooth 5.3, 3.5 mm AUX</td></tr>
+          <tr><th>Battery life</th><td>Up to 40 hours (ANC off)</td></tr>
+          <tr><th>Charging</th><td>USB-C, 10 min = 5 hours</td></tr>
+          <tr><th>Weight</th><td>250 g</td></tr>
+          <tr><th>In the box</th><td>Headphones, case, USB-C cable, AUX cable</td></tr>
+          <tr><th>Warranty</th><td>1 year</td></tr>
+        </table>
+      </div>
+
+      <div role="tabpanel" id="p-reviews" aria-labelledby="t-reviews" class="panel" hidden>
+        <!-- Sample data for demo purposes -->
+        <div class="review-summary">
+          <div class="score"><b>4.4</b><span class="stars">★★★★<i>★</i></span><small>1,284 ratings</small></div>
+          <div class="bars">
+            <div><span>5★</span><i style="--w:62%"></i><span>62%</span></div>
+            <div><span>4★</span><i style="--w:21%"></i><span>21%</span></div>
+            <div><span>3★</span><i style="--w:10%"></i><span>10%</span></div>
+            <div><span>2★</span><i style="--w:4%"></i><span>4%</span></div>
+            <div><span>1★</span><i style="--w:3%"></i><span>3%</span></div>
+          </div>
+        </div>
+        <article class="review"><h3>Great ANC for the price <span class="stars sm">★★★★★</span></h3><p>Blocks out the bus and the fan at home. Battery easily lasts a week of commuting.</p><small>Rahul K. · Verified purchase</small></article>
+        <article class="review"><h3>Comfortable all day <span class="stars sm">★★★★<i>★</i></span></h3><p>Light and soft on the ears. Bass is good, treble could be a bit sharper.</p><small>Ananya S. · Verified purchase</small></article>
+        <article class="review"><h3>Good call quality <span class="stars sm">★★★★<i>★</i></span></h3><p>People can hear me clearly on calls even outdoors. Pairing with two devices works well.</p><small>Imran M. · Verified purchase</small></article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer"><div class="wrap"><p>© <span id="year"></span> VoltStore · Demo product page for a web development internship.</p></div></footer>
+
+  <!-- Cart drawer -->
+  <div class="overlay" id="overlay" hidden></div>
+  <aside class="drawer" id="drawer" aria-label="Shopping cart" aria-hidden="true">
+    <div class="drawer-head"><h2>Your cart</h2><button id="closeCart" aria-label="Close cart">✕</button></div>
+    <ul class="cart-list" id="cartList"></ul>
+    <p class="cart-empty" id="cartEmpty">Your cart is empty.</p>
+    <div class="cart-foot" id="cartFoot">
+      <div class="line"><span>Subtotal</span><b id="subtotal">₹0</b></div>
+      <div class="line"><span>Delivery</span><b id="shipping">Free</b></div>
+      <div class="line total"><span>Total</span><b id="total">₹0</b></div>
+      <button class="btn primary full" id="checkout">Checkout</button>
+      <button class="clear" id="clearCart">Clear cart</button>
+    </div>
+  </aside>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="script%20(4).js"></script>
+</body>
+</html>
