@@ -41,7 +41,7 @@
     <div class="wrap top-row">
       <a href="#" class="logo">Volt<span>Store</span></a>
       <p class="promo">Free delivery over ₹999 · 7-day returns</p>
-      <button class="cart-btn" id="openCart" aria-label="Open cart">
+      <button class="cart-btn" id="openCart" aria-label="Open cart" aria-controls="drawer" aria-haspopup="dialog">
         <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4h2l2.4 11.2a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.5L21 8H6"/><circle cx="10" cy="20" r="1.2"/><circle cx="17" cy="20" r="1.2"/></svg>
         <span class="badge" id="cartCount">0</span>
       </button>
@@ -110,7 +110,7 @@
         <p class="stock">● In stock <span>· Only 7 left, order soon</span></p>
 
         <div class="delivery">
-          <label for="pin">Check delivery</label>
+          <label for="pin">Check delivery <span class="demo-note">(demo estimate)</span></label>
           <div class="pin-row">
             <input id="pin" inputmode="numeric" maxlength="6" placeholder="Enter 6-digit pincode">
             <button class="btn" id="pinBtn" type="button">Check</button>
@@ -174,9 +174,9 @@
   <footer class="footer"><div class="wrap"><p>© <span id="year"></span> VoltStore · Demo product page for a web development internship.</p></div></footer>
 
   <!-- Cart drawer -->
-  <div class="overlay" id="overlay" hidden></div>
-  <aside class="drawer" id="drawer" aria-label="Shopping cart" aria-hidden="true">
-    <div class="drawer-head"><h2>Your cart</h2><button id="closeCart" aria-label="Close cart">✕</button></div>
+  <div class="overlay" id="overlay" aria-hidden="true" hidden></div>
+  <aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="cartTitle" aria-hidden="true" tabindex="-1">
+    <div class="drawer-head"><h2 id="cartTitle">Your cart</h2><button id="closeCart" aria-label="Close cart">✕</button></div>
     <ul class="cart-list" id="cartList"></ul>
     <p class="cart-empty" id="cartEmpty">Your cart is empty.</p>
     <div class="cart-foot" id="cartFoot">
