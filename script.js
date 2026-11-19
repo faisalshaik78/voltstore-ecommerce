@@ -6,8 +6,24 @@ const $ = id => document.getElementById(id);
 const money = n => '₹' + n.toLocaleString('en-IN');
 
 /* ---------- State (cart persisted in localStorage) ---------- */
+const COLOR_OPTIONS = {
+  Midnight: '#1F2937',
+  Sage: '#6B8F71',
+  Coral: '#E4572E'
+};
 let cart = [];
-try { cart = JSON.parse(localStorage.getItem('voltCart')) || []; } catch (_) { cart = []; }
+try {
+  const saved = JSON.parse(localStorage.getItem('voltCart'));
+  if (Array.isArray(saved)) {
+    const seen = new Set();
+    cart = saved.filter(item =>
+      item && typeof item.color === 'string' &&
+      Object.prototype.hasOwnProperty.call(COLOR_OPTIONS, item.color) &&
+      Number.isInteger(item.qty) && item.qty >= 1 && item.qty <= MAX_QTY &&
+      !seen.has(item.color) && (seen.add(item.color), true)
+    ).map(item => ({ color: item.color, hex: COLOR_OPTIONS[item.color], qty: item.qty }));
+  }
+} catch (_) { cart = []; }
 const save = () => { try { localStorage.setItem('voltCart', JSON.stringify(cart)); } catch (_) {} };
 
 /* ---------- Gallery ---------- */
@@ -54,8 +70,15 @@ function addToCart(openAfter) {
   const c = currentColor();
   const n = clamp(qty.value);
   const existing = cart.find(i => i.color === c.value);
-  if (existing) existing.qty = Math.min(MAX_QTY, existing.qty + n);
-  else cart.push({ color: c.value, hex: c.dataset.hex, qty: n });
+  const currentQty = existing ? existing.qty : 0;
+  const available = MAX_QTY - currentQty;
+  if (available < 1) {
+    toast(`Maximum ${MAX_QTY} items per colour`);
+    return;
+  }
+  const addQty = Math.min(n, available);
+  if (existing) existing.qty += addQty;
+  else cart.push({ color: c.value, hex: COLOR_OPTIONS[c.value], qty: addQty });
   save(); render();
   const badge = $('cartCount');
   badge.classList.remove('bump'); void badge.offsetWidth; badge.classList.add('bump');
@@ -64,7 +87,11 @@ function addToCart(openAfter) {
 function change(color, delta) {
   const item = cart.find(i => i.color === color);
   if (!item) return;
-  item.qty = Math.min(MAX_QTY, item.qty + delta);
+  if (delta > 0 && item.qty >= MAX_QTY) {
+    toast(`Maximum ${MAX_QTY} items per colour`);
+    return;
+  }
+  item.qty += delta;
   if (item.qty < 1) cart = cart.filter(i => i !== item);
   save(); render();
 }
@@ -114,18 +141,57 @@ $('checkout').addEventListener('click', () => toast('Demo only: checkout is not 
 
 /* ---------- Drawer ---------- */
 const drawer = $('drawer'), overlay = $('overlay');
+let lastFocusedElement = null;
 function openCart() {
-  drawer.classList.add('open'); drawer.setAttribute('aria-hidden', 'false'); overlay.hidden = false;
+  if (drawer.classList.contains('open')) return;
+  lastFocusedElement = document.activeElement;
+  drawer.classList.add('open');
+  drawer.setAttribute('aria-hidden', 'false');
+  overlay.hidden = false;
+  overlay.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
   $('closeCart').focus();
 }
 function closeCart() {
-  drawer.classList.remove('open'); drawer.setAttribute('aria-hidden', 'true'); overlay.hidden = true;
-  $('openCart').focus();
+  if (!drawer.classList.contains('open')) return;
+  drawer.classList.remove('open');
+  drawer.setAttribute('aria-hidden', 'true');
+  overlay.hidden = true;
+  overlay.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+  const returnFocus = lastFocusedElement && document.contains(lastFocusedElement)
+    ? lastFocusedElement
+    : $('openCart');
+  returnFocus.focus();
 }
 $('openCart').addEventListener('click', openCart);
 $('closeCart').addEventListener('click', closeCart);
 overlay.addEventListener('click', closeCart);
-document.addEventListener('keydown', e => { if (e.key === 'Escape' && drawer.classList.contains('open')) closeCart(); });
+document.addEventListener('keydown', e => {
+  if (!drawer.classList.contains('open')) return;
+  if (e.key === 'Escape') {
+    e.preventDefault();
+    closeCart();
+    return;
+  }
+  if (e.key === 'Tab') {
+    const focusable = [...drawer.querySelectorAll('button:not([disabled]), input:not([disabled]), a[href], [tabindex]:not([tabindex="-1"])')]
+      .filter(el => el.offsetParent !== null);
+    if (!focusable.length) {
+      e.preventDefault();
+      drawer.focus();
+      return;
+    }
+    const first = focusable[0], last = focusable[focusable.length - 1];
+    if (e.shiftKey && (document.activeElement === first || document.activeElement === drawer)) {
+      e.preventDefault();
+      last.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault();
+      first.focus();
+    }
+  }
+});
 
 /* ---------- Pincode check ---------- */
 function checkPin() {
@@ -133,7 +199,7 @@ function checkPin() {
   if (!/^[1-9]\d{5}$/.test(v)) { msg.className = 'pin-msg bad'; msg.textContent = 'Enter a valid 6-digit pincode.'; return; }
   const d = new Date(); d.setDate(d.getDate() + 4);
   msg.className = 'pin-msg ok';
-  msg.textContent = 'Delivery by ' + d.toLocaleDateString('en-IN', { weekday: 'short', day: 'numeric', month: 'short' }) + ' · Free';
+  msg.textContent = 'Estimated delivery: ' + d.toLocaleDateString('en-IN', { weekday: 'short', day: 'numeric', month: 'short' }) + ' · Demo estimate only';
 }
 $('pinBtn').addEventListener('click', checkPin);
 $('pin').addEventListener('keydown', e => { if (e.key === 'Enter') checkPin(); });
