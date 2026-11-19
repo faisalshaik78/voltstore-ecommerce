@@ -133,3 +133,24 @@ h1{font-family:var(--display);font-size:clamp(1.6rem,3.2vw,2.2rem);line-height:1
   .promo{display:none}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+
+/* Small interaction and accessibility refinements */
+.thumb{transition:border-color .18s,transform .18s}
+.thumb:hover{transform:translateY(-2px)}
+.qty input:focus-visible,.pin-row input:focus-visible{outline:3px solid #2F6BFF;outline-offset:2px}
+.demo-note{font-size:.78rem;font-weight:400;color:var(--muted)}
+.drawer{overscroll-behavior:contain}
+.cart-list{overscroll-behavior:contain}
+.cart-item .mini-qty button:hover{background:var(--line)}
+.remove:hover,.clear:hover{text-decoration:none;color:var(--accent)}
+.btn:active,.cart-btn:active,.wish:active{transform:scale(.98)}
+@media (max-width:480px){
+  .buy-row{gap:.45rem;flex-wrap:wrap}
+  .buy-row .qty{flex:0 0 auto}
+  .buy-row .btn.primary{min-width:0}
+  .buy-row .wish{flex:0 0 46px}
+  .trust{gap:.65rem 1rem}
+  .drawer-head,.cart-foot{padding-inline:1rem}
+  .cart-list{padding-inline:1rem}
+}
