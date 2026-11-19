@@ -82,7 +82,7 @@ function addToCart(openAfter) {
   save(); render();
   const badge = $('cartCount');
   badge.classList.remove('bump'); void badge.offsetWidth; badge.classList.add('bump');
-  openAfter ? openCart() : toast(`Added ${n} × ${c.value} to cart`);
+  openAfter ? openCart() : toast(`Added ${addQty} × ${c.value} to cart`);
 }
 function change(color, delta) {
   const item = cart.find(i => i.color === color);
